@@ -1,6 +1,41 @@
 class Config:
-    def __init__(self):
-        self.leet = {
+    def __init__(self, mots=[], dates=[], dict_leet={}):
+        self.mots = mots
+        self.dates = dates
+        self.dict_leet = dict_leet
+
+    def _add_mot(self, mot):
+        if mot and mot not in self.mots:
+            self.__mots.append(mot)
+
+    def _add_date(self, date):
+        if date and date not in self.dates:
+            self.__dates.append(date)
+
+# Getter / Setter
+    @property
+    def mots(self):
+        return self.__mots
+
+    @mots.setter
+    def mots(self, value):
+        self.__mots = value or []
+
+    @property
+    def dates(self):
+        return self.__dates
+
+    @dates.setter
+    def dates(self, value):
+        self.__dates = value or []
+
+    @property
+    def dict_leet(self):
+        return self.__dict_leet
+
+    @dict_leet.setter
+    def dict_leet(self, value):
+        self.__dict_leet = value or {
             'a': '4',
             'e': '3',
             'i': '1',
@@ -12,11 +47,3 @@ class Config:
             'z': '2',
             'g': '6'
         }
-        self.__mots = ['StarWars'] #Seulement si test, sinon pris du formulaire (.env)
-        self.__dates = ['2022-12-18'] #Pareil
-
-    def _get_mots(self):
-        return self.__mots
-
-    def _get_dates(self):
-        return self.__dates 

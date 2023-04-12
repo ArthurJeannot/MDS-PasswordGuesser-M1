@@ -1,5 +1,7 @@
+# TODO
+
 class OptionsDate:
-    def __init__(self, dates) :
+    def __init__(self, dates):
         self._dates = dates
         self._months = []
         self._elements = []
