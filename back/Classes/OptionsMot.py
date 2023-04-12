@@ -3,11 +3,11 @@ import itertools
 
 
 class OptionsMot:
-    def __init__(self, mots=[], dict_leet={}):
+    def __init__(self, mots=[str], dict_leet={str}):
         self.mots = mots
         self.dict_leet = dict_leet
 
-    def apply_all_option(self):
+    def apply_all_options(self):
         self.uppercase()
         self.lowercase()
         self.capital()
