@@ -1,3 +1,5 @@
+#WIP, a refacto
+
 from datetime import datetime
 from typing import List
 
