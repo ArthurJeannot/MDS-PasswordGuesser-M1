@@ -3,6 +3,14 @@ class Config:
         self.mots = mots
         self.dates = dates
         self.dict_leet = dict_leet
+        #TODO stocker un dico d'option
+        self.options = {
+            'lowercase' : True,
+            'uppercase' : False,
+            'etc..' : True
+        }
+        # Ajout si inexistant, écrase si existant
+        self.options.update({'leet' : True, 'etc...' : False})
 
     def _add_mot(self, mot):
         if mot and mot not in self.mots:

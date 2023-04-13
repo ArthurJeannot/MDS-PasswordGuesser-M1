@@ -1,7 +1,8 @@
 from .Config import Config
-from .Options.OptionsMot import OptionsMot
-from .Options.OptionsDate import OptionsDate
-
+from .Options.Case.Uppercase import Uppercase
+from .Options.Case.Lowercase import Lowercase
+from .Options.Case.Capitalize import Capitalize
+from .Options.Case.Accentless import Accentless
 class Engine:
     def __init__(self, config=None):
         self.config = config
@@ -11,9 +12,14 @@ class Engine:
         
         
         # Traitements des mots
-        mots = self.config.mots
-        options_mot = OptionsMot(mots)
-        print(options_mot.apply_all_options())
+        elements = self.config.mots
+        elements = list(set(elements + Uppercase(elements).possibility))
+        elements = list(set(elements + Lowercase(elements).possibility))
+        elements = list(set(elements + Capitalize(elements).possibility))
+        elements = list(set(elements + Accentless(elements).possibility))          
+
+        
+        print(elements)
         
         # Traitement des dates
         # dates = self.config.dates
