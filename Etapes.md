@@ -2,7 +2,7 @@ Actuellement, il faut run Engine.py
 ____
 
 Récupérer toute les info sous forme de mot
-Faire toute les combi possible allant jusqu'a 5 éléments
+Faire toute les combi possible allant jusqu'a 3 éléments
 
 Une date = plusieurs éléments (j, m, a) = exemple:
 

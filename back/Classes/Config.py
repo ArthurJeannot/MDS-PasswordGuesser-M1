@@ -1,5 +1,5 @@
 class Config:
-    def __init__(self, mots=[str], dates=[str], dict_leet={str}):
+    def __init__(self, mots=[], dates=[], dict_leet={}):
         self.mots = mots
         self.dates = dates
         self.dict_leet = dict_leet

@@ -1,10 +1,10 @@
-class ManageCase:
+class ManageWord:
     def __init__(self, mots=[]):
         self.mots = mots
-        self.possibility = self.run()
+        self.possibility = self._run()
 
     #Méthode a overide dans les classes filles
-    def run(self):
+    def _run(self):
         pass
     
 # Getter / Setter

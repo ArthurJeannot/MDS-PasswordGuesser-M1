@@ -3,6 +3,8 @@ from .Options.Case.Uppercase import Uppercase
 from .Options.Case.Lowercase import Lowercase
 from .Options.Case.Capitalize import Capitalize
 from .Options.Case.Accentless import Accentless
+from .Options.Leet.LeetMax import LeetMax
+from .Options.Leet.LeetMin import LeetMin
 class Engine:
     def __init__(self, config=None):
         self.config = config
@@ -13,10 +15,14 @@ class Engine:
         
         # Traitements des mots
         elements = self.config.mots
+        
         elements = list(set(elements + Uppercase(elements).possibility))
         elements = list(set(elements + Lowercase(elements).possibility))
         elements = list(set(elements + Capitalize(elements).possibility))
-        elements = list(set(elements + Accentless(elements).possibility))          
+        elements = list(set(elements + Accentless(elements).possibility))
+        
+        elements = list(set(elements + LeetMin(elements).possibility))
+        elements = list(set(elements + LeetMax(elements).possibility))
 
         
         print(elements)
