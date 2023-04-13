@@ -10,10 +10,7 @@ class Engine:
         self.config = config
 
     def run(self):
-        #TODO: Récup les options choisi et n'appliquer que ceux la
-        
-        
-        # Traitements des mots
+        #TODO: Récup les options choisi et n'appliquer que ceux la (Liste de config) > Ajouter des if pour chaque ajout d'élément
         elements = self.config.mots
         
         elements = list(set(elements + Uppercase(elements).possibility))
@@ -26,6 +23,7 @@ class Engine:
 
         
         print(elements)
+        print("Nombre d'éléments :", len(elements))
         
         # Traitement des dates
         # dates = self.config.dates

@@ -1,4 +1,4 @@
-#WIP, a refacto
+#TODO, a refacto et faire pareil que leet et case
 
 from datetime import datetime
 from typing import List

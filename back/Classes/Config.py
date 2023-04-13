@@ -1,16 +1,8 @@
 class Config:
-    def __init__(self, mots=[], dates=[], dict_leet={}):
+    def __init__(self, mots=[], dates=[]):
         self.mots = mots
         self.dates = dates
-        self.dict_leet = dict_leet
-        #TODO stocker un dico d'option
-        self.options = {
-            'lowercase' : True,
-            'uppercase' : False,
-            'etc..' : True
-        }
-        # Ajout si inexistant, écrase si existant
-        self.options.update({'leet' : True, 'etc...' : False})
+        self.reset_default_option()
 
     def _add_mot(self, mot):
         if mot and mot not in self.mots:
@@ -19,6 +11,22 @@ class Config:
     def _add_date(self, date):
         if date and date not in self.dates:
             self.__dates.append(date)
+        
+    # Limite l'accès a la liste d'options, permet d'éviter la modification des champs d'option
+    # Les méthodes enable et disable permettent d'activer/désactiver les options présente dans la liste de base
+    def enable_option(self, options = []):
+        for key in options:
+            if key in self.default_option.keys():
+                self.options[key] = True
+        
+    def disable_option(self, options = []):
+        for key in options:
+            if key in self.default_option.keys():
+                self.options[key] = False
+            
+    #Remet la liste de filtre a celle par défaut
+    def reset_default_option(self):
+        self.__options = self.default_option
 
 # Getter / Setter
     @property
@@ -36,22 +44,26 @@ class Config:
     @dates.setter
     def dates(self, value):
         self.__dates = value or []
-
+        
     @property
-    def dict_leet(self):
-        return self.__dict_leet
+    def mots(self):
+        return self.__mots
 
-    @dict_leet.setter
-    def dict_leet(self, value):
-        self.__dict_leet = value or {
-            'a': '4',
-            'e': '3',
-            'i': '1',
-            'o': '0',
-            'l': '1',
-            's': '5',
-            'b': '8',
-            't': '7',
-            'z': '2',
-            'g': '6'
+    @mots.setter
+    def mots(self, value):
+        self.__mots = value or []
+        
+    @property
+    def options(self):
+        return self.__options
+    
+    @property
+    def default_option(self):
+        return {
+            'uppercase' : True,
+            'lowercase' : True,
+            'accentless' : True,
+            'capitalize' : True,
+            'leet_max' : True,
+            'leet_min' : True
         }
