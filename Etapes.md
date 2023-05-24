@@ -1,5 +1,6 @@
-Actuellement, il faut run Engine.py
-____
+Commande a run : `py .\back\main`
+
+
 
 Récupérer toute les info sous forme de mot
 Faire toute les combi possible allant jusqu'a 3 éléments

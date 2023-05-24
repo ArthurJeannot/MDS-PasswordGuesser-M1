@@ -1,16 +1,18 @@
 class Config:
-    def __init__(self, mots=[], dates=[]):
-        self.mots = mots
-        self.dates = dates
+    def __init__(self, mots = [], dates = []):
+        self.mots = list(set(mots))
+        self.dates = list(set(dates))
         self.reset_default_option()
 
-    def _add_mot(self, mot):
-        if mot and mot not in self.mots:
-            self.__mots.append(mot)
+    def _add_mots(self, mots = []):
+        for mot in mots:
+            if mot and mot not in self.mots:
+                self.mots.append(mot)
 
-    def _add_date(self, date):
-        if date and date not in self.dates:
-            self.__dates.append(date)
+    def _add_dates(self, dates = []):
+        for date in dates:
+            if date and date not in self.dates:
+                self.dates.append(date)
         
     # Limite l'accès a la liste d'options, permet d'éviter la modification des champs d'option
     # Les méthodes enable et disable permettent d'activer/désactiver les options présente dans la liste de base

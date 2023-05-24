@@ -1,13 +1,13 @@
-from ..ManageWord import ManageWord
+from ..ManageElement import ManageElement
 import itertools
 
-class ManageLeet(ManageWord):    
-    def __init__(self, mots=[]):
-        super().__init__(mots)
+class ManageLeet(ManageElement):    
+    def __init__(self, elements=[]):
+        super().__init__(elements)
         
     def _run(self):
         res = []
-        for mot in self.mots:
+        for mot in self.elements:
             leet_chars = []
             
             for char in mot:

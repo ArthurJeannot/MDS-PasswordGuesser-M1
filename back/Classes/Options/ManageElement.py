@@ -1,6 +1,6 @@
-class ManageWord:
-    def __init__(self, mots=[]):
-        self.mots = mots
+class ManageElement:
+    def __init__(self, elements=[]):
+        self.elements = elements
         self.possibility = self._run()
 
     #Méthode a overide dans les classes filles
@@ -9,12 +9,12 @@ class ManageWord:
     
 # Getter / Setter
     @property
-    def mots(self):
-        return self._mots
+    def elements(self):
+        return self._elements
 
-    @mots.setter
-    def mots(self, value):
-        self._mots = value or []
+    @elements.setter
+    def elements(self, value):
+        self._elements = value or []
         
     @property
     def possibility(self):
