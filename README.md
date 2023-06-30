@@ -37,7 +37,7 @@ En Python, on utilise des propriétés pour définirs les accesseurs et mutateur
 - Private: Dans la classe `Engine.py`, la méthode [__init_config(self)](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Engine.py#L58) est privée.
 
 ---------------
-## Méthodes/attributs statiques, d'objet et de classe
+**Méthodes/attributs statiques, d'objet et de classe**
 
 - Les méthode/attributs d'objet est lié à une instance spécifique d'une classe. Elles peuvent accéder aux attributs et aux autres méthodes de cette instance (Utilisation de `self` en python).
 - Les méthodes/attributs de classe n'ont pas besoin d'une instance de classe. Elles ne peuvent pas accéder à l'instance `self`, mais elles ont accès à la classe elle-même via `cls`.
@@ -55,17 +55,17 @@ En python, on utilise les décorateur `@staticmethod` et `@classmethod` pour dé
 
 ---------------
 
-## Héritage
+**Héritage**
 
 L'héritage permet à une classe (appelée classe fille) d'hériter des caractéristiques et du comportement d'une autre classe (appelée classe mère). La classe fille a donc accès a toute les méthodes/attribut public et protected de sa classe mère.
 
 *Exemple dans le code*
 
-La classe [Options/Leet/ManageLeet.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/ManageLeet.py) hérite de ma classe abstraite [Options/ManageElement.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/ManageElement.py), elle est aussi la classe mère de [Options/Leet/LeetMin.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMin.py) et de [Options/Leet/LeetMin.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMax.py)
+La classe [Options/Leet/ManageLeet.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/ManageLeet.py) hérite de ma classe abstraite [Options/ManageElement.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/ManageElement.py), elle est aussi la classe mère de [Options/Leet/LeetMin.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMin.py) et de [Options/Leet/LeetMax.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMax.py)
 
 ---------------
 
-## Polymorphisme & Surcharge
+**Polymorphisme & Surcharge**
 
 Le polymorphisme consiste a redéfinir une méthode en gardant la même signature (Nom, Paramètres, Visibilité et Type de retour), elle est notamment utilisé dans des classes filles, ou lors de l'implémentation de méthode abstraite d'une interface/classe abstraite.
 La surcharge quand a elle, consiste a changer la signature d'une méthode en changeant les paramètres (nombres, type et/ou ordre) et en gardant le même nom. Contrairement au polymorphisme, elle n'as pas besoin d'être dans une classe héritée.
