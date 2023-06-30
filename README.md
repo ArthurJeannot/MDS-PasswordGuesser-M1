@@ -51,7 +51,7 @@ En python, on utilise les décorateur `@staticmethod` et `@classmethod` pour dé
 
 - Classe: Dans la classe `Options/ManageElement.py`, la méthode [add_word_possibility(cls, elements=[])](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/ManageElement.py#L12) est une méthode de classe. Elle est utilisé dans la classe [Engine.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Engine.py#L34).
 
-- Static: Dans la classe `Options/Dates/HumanMonth.py`, la méthode [available_languages(cls)](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/main/back/Classes/Options/Dates/HumanMonth.py#L59) est static. Elle est utilisé dans la classe [Engine.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Engine.py#L66)
+- Static: Dans la classe `Options/Dates/HumanMonth.py`, la méthode [available_languages(cls)](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/main/back/Classes/Options/Dates/HumanMonth.py#L59) est static. Elle est utilisé dans la classe [Engine.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Engine.py#L67)
 
 ---------------
 
