@@ -18,7 +18,7 @@ class Engine:
         self.config = Config()
                        
     def run(self):
-        self.init_config()
+        self.__init_config()
         guesser = PasswordGenerator(self.get_all_elements())
         combinaisons = guesser.generate(self.nb_combinaison)
         print('\n--------')
@@ -27,7 +27,6 @@ class Engine:
     def get_all_elements(self):
         dates = self.config.dates
         elements = self.config.mots        
-
         for option, value in self.config.options.items():
             if value:
                 if option == 'uppercase':
@@ -56,7 +55,7 @@ class Engine:
                     elements = SpecialChar.add_special_char(elements)
         return elements
     
-    def init_config(self):
+    def __init_config(self):
         mots = input("Saisissez une liste de mots, séparés par des espaces (Vide si aucun mot)\n:").split()
         print('\n--------')
         dates = (input("Saisissez saisir une liste de dates (Format AAAA-MM-DD), séparées par des espaces (Vide si aucune date)\n:").split())

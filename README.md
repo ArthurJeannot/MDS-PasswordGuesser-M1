@@ -1,85 +1,92 @@
-# PasswordGuesser
+## Explications
 
-PasswordGuesser est un projet visant à simuler la création de mots de passe d'utilisateurs sur le web à partir d'informations données. L'idée principale étant de faire prendre conscience aux utilisateur de la faiblesse générale de leurs mots de passe et de la simplicité de piratage qui est en jeu.
+**Composition**
 
-## Objectif
-L'objectif premier pour ce cours est de pratiquer l'Orienté Objet, sujet initial du cours pour lequel à été réalisé ce projet. Une interface web devra également être réalisée et sera in fine mise en ligne.
+La composition est le fait d'avoir une instance d'une classe à l'intérieur d'une autre classe, ce qui permet aux deux classes d'interagir entre elles.
 
-## Technos
-Par souci de simplicité, les techologies suivantes seront obligatoires : 
-- HTML & CSS
-- JAVASCRIPT (natif)
-- PYTHON (natif)
+*Exemple dans le code*
 
-Le HTML & le CSS seront utilisés pour générer l'interface graphique web utilisateur. L'utilisation d'un template trouvé sur le net est fortement recommandé afin d'obtenir un résultat propre et professionnel.
+Dans [Engine.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Engine.py#L22), on utilise une instance de `PasswordGenerator.py` dans le run
 
-Le JavaScript ne devra être utilisé qu'en natif, et ne devra avoir aucun framework d'implémenté.
+---------------
 
-Le code réalisé en Python devra également être natif. Des librairies peuvent être utilisées, mais aucun framework n'est autorisé. L'ensemble du code devra être réalisé en orienté objet uniquement, et le fichier de lancement du script ne devra contenir qu'une seule ligne (éventuellement une de plus pour réaliser un import).
+**Encapsulation**
 
-NB : Pour pouvoir exécuter un script python depuis le JavaScript, vous aurez peut-etre besoin d'utiliser un framework ou micro-framework, du type Flask par exemple. Vous pourrez l'implémenter une fois votre programme python fonctionnel sur la génération des mots de passe. 
+L'encapsulation consiste à restreindre l'accès à certains éléments d'une classe, permettant ainsi de rendre accessibles uniquement les éléments nécessaires à son utilisation.
 
-## interface graphique
+Pour cela, on utilise la notion de visibilité pour définir l'accès aux propriétés et aux méthodes d'une classe.
+- Public: La propriété/méthode sera accessible à l'intérieur mais aussi à l'extérieur de la classe.
+- Privé: La propriété/méthode sera accessible uniquement à l'intérieur de la classe.
+- Protégé: La propriété/méthode sera accessible uniquement à l'intérieur de la classe et a ses classes filles (Voir Héritage).
 
-L'interface graphique devra présenter un formulaire dynamique à l'utilisateur. Celui-ci pourra : 
-- renseigner un nombre de mots illimité (1 mot par champs) ;
-- renseigner un nombre de dates illimité (1 date par champs).
+En python, il n'y a pas de mot clé pour définir la visibilité, de plus les propriétés/attributs ne sont pas strictement bloqué par le language. A la place des convention de nommage sont utilisé avec des `_` devant le nom des attributs/méthodes.
+- 0 underscore = Visibilité public
+- 1 underscore = Visibilité protected
+- 2 underscore = Visibilité privé
 
-Une fois le formulaire soumi, les informations devront être envoyées en asynchrone au programme python, qui réalisera l'ensemble du traitement des données. Ce programme devra donc renvoyer une liste de mots de passe générés à partir des informations fournies au format JSON, de telle sorte que la page web initiale pourra les afficher dans un tableau filtrable (utilisation de DataTables autorisée).
+Pour accéder/modifier des propriété privé/protected d'une classe depuis l'extérieur d'une classe, on utilise des méthodes appelé Accesseurs (Getter) et Mutateur (Setter).
 
-## Options du Guesser
+En Python, on utilise des propriétés pour définirs les accesseurs et mutateurs en python. On ajoute les décorateurs `@property` avant le mutateur et `@[attribut].setter` pour les mutateurs.
 
-Le formulaire ainsi que le programme devront proposer de choisir parmis plusieurs options pour la génération des mots de passe.
+*Exemple dans le code*
 
-**Maximum 5 éléments par combinaison**
+- Public: Dans la classe `Options/ManageElement.py`, la méthode [def elements(self, value)](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/ManageElement.py#L22) est une méthode public, servant de mutateur a la propriété `_element`
 
-### Options pour les mots
-- Basculer toutes les lettres en minuscule
-- Basculer toutes les lettres en majuscule
-- Basculer la première lettre en majuscule
-- Retirer les accents
-- Utiliser le L33T (trouver toutes les combinaisons possibles)
+- Protected: Dans la classe `Options/Leet/ManageLeet.py`, la méthode [_run(self)](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/ManageLeet.py#L8) est protected.
 
-NB : Combinaisons L33T à prendre en compte : 
-- a => 4
-- e => 3
-- i => 1
-- o => 0
-- l => 1
-- s => 5
-- b => 8
-- t => 7
-- z => 2
-- g => 6
+- Private: Dans la classe `Engine.py`, la méthode [__init_config(self)](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Engine.py#L58) est privée.
 
-### Options pour les dates
-- Séparer les informations des dates pour les combiner avec les mots (comportement par défaut)
-- Utiliser les nombres des dates
-- Transformer les dates en langage humain pour les mois
-- Utiliser l'année sur 2 chiffres
-- Utiliser l'année sur 4 chiffres
-- Ajouter la possibilité de choisir la langue utilisée pour récupérer les noms des jours / mois
+---------------
+## Méthodes/attributs statiques, d'objet et de classe
 
-### Options caractères spéciaux
-- Ajouter les caractères spéciaux les plus communs (.$?!*)
-- Ajouter tous les caractères spéciaux
-- Nombre de caractères spéciaux maximums dans la combinaison ?
+- Les méthode/attributs d'objet est lié à une instance spécifique d'une classe. Elles peuvent accéder aux attributs et aux autres méthodes de cette instance (Utilisation de `self` en python).
+- Les méthodes/attributs de classe n'ont pas besoin d'une instance de classe. Elles ne peuvent pas accéder à l'instance `self`, mais elles ont accès à la classe elle-même via `cls`.
+- Les méthodes/attributs statiques n'ont pas accès à `cls` ou `self`. Elles fonctionnent comme des fonctions normales, mais elles appartiennent à l'espace de noms de la classe.
 
+En python, on utilise les décorateur `@staticmethod` et `@classmethod` pour définir les méthodes static et de classes. De plus une méthode d'objet a en paramètre par défaut `self`, une méthode de classe a `cls` et static n'en a pas
 
-## Groupes
-Les projets sont à réaliser de manière individuelle mais l'entraide est fortement recommandée.
-La notation se fera le dernier jour consacré à cette matière.
+*Exemple dans le code*
 
-## Étapes 
+- Objet: Dans la classe `Engine`, la méthodes [get_all_elements](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Engine.py#L27)
 
-1. faire le design HTML/CSS, y inclure l'ensemble du formulaire (avec toutes les options)
-2. Attaquer le programme Python
-  - Si vous n'êtes pas (encore) à l'aise en POO, commencez en procédural !
-  - Traitez 1 par 1, les possibilités du formulaire.
-3. Faire intéragir le formulaire et le python grâce à la mise en place de Flask, qui vous permettra d'appler le python depuis le JavaScript, en AJAX.
-4. Intégrer les mots de passe générés dans un tableau HTML. Le rendre "filtrable" pour vérifier l'existence d'un mot de passe spécifique.
+- Classe: Dans la classe `Options/ManageElement.py`, la méthode [add_word_possibility(cls, elements=[])](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/ManageElement.py#L12) est une méthode de classe. Elle est utilisé dans la classe [Engine.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Engine.py#L34).
 
+- Static: Dans la classe `Options/Dates/HumanMonth.py`, la méthode [available_languages(cls)](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/main/back/Classes/Options/Dates/HumanMonth.py#L59) est static. Elle est utilisé dans la classe [Engine.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Engine.py#L66)
 
-## Liens utiles Design Pattern
-https://en.wikipedia.org/wiki/Design_Patterns
-https://en.wikipedia.org/wiki/Software_design_pattern
+---------------
+
+## Héritage
+
+L'héritage permet à une classe (appelée classe fille) d'hériter des caractéristiques et du comportement d'une autre classe (appelée classe mère). La classe fille a donc accès a toute les méthodes/attribut public et protected de sa classe mère.
+
+*Exemple dans le code*
+
+La classe [Options/Leet/ManageLeet.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/ManageLeet.py) hérite de ma classe abstraite [Options/ManageElement.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/ManageElement.py), elle est aussi la classe mère de [Options/Leet/LeetMin.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMin.py) et de [Options/Leet/LeetMin.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMax.py)
+
+---------------
+
+## Polymorphisme & Surcharge
+
+Le polymorphisme consiste a redéfinir une méthode en gardant la même signature (Nom, Paramètres, Visibilité et Type de retour), elle est notamment utilisé dans des classes filles, ou lors de l'implémentation de méthode abstraite d'une interface/classe abstraite.
+La surcharge quand a elle, consiste a changer la signature d'une méthode en changeant les paramètres (nombres, type et/ou ordre) et en gardant le même nom. Contrairement au polymorphisme, elle n'as pas besoin d'être dans une classe héritée.
+
+*Exemple dans le code*
+
+Dans la classe [Options/Case/Accentless.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Case/Accentless.py#L8), la méthode `_run(self)` est un polymorphisme du run de la classe mère `Options/ManageElement.py`
+
+---------------
+
+**Interface et Classe Abstraite**
+
+Une classe abstraite est une classe dont toutes les méthodes n’ont pas été implémentées, elle n’est donc pas instanciable. Une classe qui hérite d’une classe abstraite doit obligatoirement implémenter les méthodes manquantes (déclarées « abstraites » dans la classe parente).
+
+Une interface est un contrat, qui défini un ensemble de comportement que les classes qui l'implémentent. Elle a une collection de méthodes abstraites. Contrairement a la classe abstraite, une classe peut avoir plusieurs interfaces (Alors qu'une classe ne peut hérité que d'une seule classe abstraite) et les interfaces ne peuvent pas avoir de méthodes déjà implémenté.
+
+En python, le module `abc` (Abstract Base Classes) permet de définir des classes abstraite en définissant des méthodes abstraite a l'aide du décorateur `@abstractmethod`. Cependant, il n'y a pas de support intégré pour les interfaces et elles sont simulés en définissant des classes abstraite avec uniquement des méthodes abstraites.
+
+*Exemple dans le code*
+
+La classe [Options/ManageElement.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/ManageElement.py) est une classe abstraite qui est utilisé pour toutes les classes dans les dossier de `/Options/`.
+Elle comporte une méthode abstraite `_run(self)` qui doit être implémenté dans toutes les classes filles. Son constructeur, des attributs et des getter/setter sont défini, donc il ne s'agit pas d'une interface.
+
+Si on essaie de l'instancié au lieu d'utilisé ses classes filles, on recoit l'erreur: `TypeError: Can't instantiate abstract class ManageElement with abstract method _run`
