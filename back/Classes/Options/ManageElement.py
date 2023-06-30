@@ -1,11 +1,17 @@
-class ManageElement:
+from abc import ABC, abstractclassmethod
+class ManageElement(ABC):
     def __init__(self, elements=[]):
         self.elements = elements
         self.possibility = self._run()
 
-    #Méthode a overide dans les classes filles
+    @abstractclassmethod
     def _run(self):
         pass
+    
+    @classmethod
+    def add_word_possibility(cls, elements=[]):
+        instance = cls(elements)
+        return list(set(elements + instance.possibility))
     
 # Getter / Setter
     @property

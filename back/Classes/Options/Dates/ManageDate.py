@@ -9,6 +9,11 @@ class ManageDate(ManageElement):
         self.dates = dates
         super().__init__(elements)
         
+    @classmethod
+    def add_dates_possibility(cls, dates=[], elements=[]):
+        instance = cls(dates)
+        return list(set(elements + instance.possibility))
+        
 # Getter / Setter
     @property
     def dates(self):

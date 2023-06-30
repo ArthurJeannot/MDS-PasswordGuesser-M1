@@ -1,14 +1,9 @@
 from Classes.Config import Config
 from Classes.Engine import Engine
+from Classes.Options.ManageElement import ManageElement
 
 
 if __name__ == '__main__':
-    config = Config(['Arthur'], ['2023-12-18'])
+    # print(Config.default_option()) #Pour test si l'instanciation d'une classe abstraite est bloqué
     
-    config.enable_option(['OptionInexistante'])
-    config.disable_option(['uppercase'])
-    # config.reset_default_option()
-    
-    # config._add_mots(['Pérennité', 'éolienne'])
-    engine = Engine(config)
-    engine.run()
+    Engine().run()

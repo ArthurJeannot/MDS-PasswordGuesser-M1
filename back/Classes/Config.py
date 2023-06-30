@@ -4,12 +4,12 @@ class Config:
         self.dates = list(set(dates))
         self.reset_default_option()
 
-    def _add_mots(self, mots = []):
+    def add_mots(self, mots = []):
         for mot in mots:
             if mot and mot not in self.mots:
                 self.mots.append(mot)
 
-    def _add_dates(self, dates = []):
+    def add_dates(self, dates = []):
         for date in dates:
             if date and date not in self.dates:
                 self.dates.append(date)
@@ -18,17 +18,17 @@ class Config:
     # Les méthodes enable et disable permettent d'activer/désactiver les options présente dans la liste de base
     def enable_option(self, options = []):
         for key in options:
-            if key in self.default_option.keys():
+            if key in self.default_option().keys():
                 self.options[key] = True
         
     def disable_option(self, options = []):
         for key in options:
-            if key in self.default_option.keys():
+            if key in self.default_option().keys():
                 self.options[key] = False
-            
+
     #Remet la liste de filtre a celle par défaut
     def reset_default_option(self):
-        self.__options = self.default_option
+        self.__options = self.default_option()
 
 # Getter / Setter
     @property
@@ -48,24 +48,22 @@ class Config:
         self.__dates = value or []
         
     @property
-    def mots(self):
-        return self.__mots
-
-    @mots.setter
-    def mots(self, value):
-        self.__mots = value or []
-        
-    @property
     def options(self):
         return self.__options
     
-    @property
-    def default_option(self):
+    @staticmethod
+    def default_option():
         return {
+            'human_month': True,
             'uppercase' : True,
             'lowercase' : True,
             'accentless' : True,
             'capitalize' : True,
             'leet_max' : True,
-            'leet_min' : True
+            'leet_min' : True,
+            'day' : True,
+            'month' : True,
+            'four_digit_year': True,
+            'two_digit_number': True,
+            'special_char': True
         }
