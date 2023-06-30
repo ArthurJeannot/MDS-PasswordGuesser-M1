@@ -61,7 +61,7 @@ L'héritage permet à une classe (appelée classe fille) d'hériter des caracté
 
 *Exemple dans le code*
 
-La classe [Options/Leet/ManageLeet.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/ManageLeet.py) hérite de ma classe abstraite [Options/ManageElement.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/ManageElement.py), elle est aussi la classe mère de [Options/Leet/LeetMin.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMin.py) et de [Options/Leet/LeetMin.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMax.py)
+La classe [Options/Leet/ManageLeet.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/ManageLeet.py) hérite de ma classe abstraite [Options/ManageElement.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/ManageElement.py), elle est aussi la classe mère de [Options/Leet/LeetMin.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMin.py) et de [Options/Leet/LeetMax.py](https://github.com/ArthurJeannot/MDS-PasswordGuesser-M1/blob/4c9f5418ecad929d37a8f0f88d0de8e19f5d4a6a/back/Classes/Options/Leet/LeetMax.py)
 
 ---------------
 
